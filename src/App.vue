@@ -29,7 +29,13 @@ const weather = ref("s");
         <h2 class="text-2xl">Weather: Cyclone</h2>
         <img src="./data/icon/weather-cyclone-icon.png" alt="" />
       </template>
-      <input type="text" name="" id="" class="text-center" v-model="weather" />
+      <input
+        type="text"
+        name=""
+        id=""
+        class="text-center py-2"
+        v-model="weather"
+      />
     </div>
   </section>
 </template>

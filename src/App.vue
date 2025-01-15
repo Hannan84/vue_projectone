@@ -1,44 +1,20 @@
-<script setup>
-const persons = [
-  {
-    id: 1,
-    name: "Jane Doe",
-    profile:
-      "https://images.generated.photos/zRuly38LuHo-upVQfxZjUb6YXOHXapy58gXXFglv1Rg/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDAzMzE4LmpwZw.jpg",
-    jobTitle: "CEO, Co-Founder",
-  },
-  {
-    id: 2,
-    name: "John Doe",
-    profile:
-      "https://images.generated.photos/dVrq4AXS8SmlQ_HTyxG4bJRmi4IulUA4omUbvvSyQMU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NDkwODEzLmpwZw.jpg",
-    jobTitle: "CTO",
-  },
-  {
-    id: 3,
-    name: "Joss Doe",
-    profile:
-      "https://images.generated.photos/XkTVulI9UnbMVl1veOfrra6bS2v0QIqLbSIQrgXni14/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTYxODM1LmpwZw.jpg",
-    jobTitle: "COO",
-  },
-];
-</script>
+<script setup></script>
 
 <template>
-  <section class="container mx-auto p-10">
-    <h1 class="text-4xl mb-10">Team Members</h1>
-    <section class="main flex space-x-4">
-      <div class="flex space-y-4 flex-col w-1/2" v-for="person in persons">
-        <img
-          class="mx-auto w-64 h-64 object-cover rounded-xl"
-          :class="2 == person.id ? 'h-80' : 'h-64'"
-          :src="person.profile"
-          alt=""
-        />
-        <h2 class="text-3xl">{{ person.name }}</h2>
-        <p class="text-xl">{{ person.jobTitle }}</p>
-      </div>
-    </section>
+  <section class="container mx-auto flex flex-col items-center">
+    <h2 class="text-center text-2xl py-10">Events & Reactivity in Vue.js</h2>
+    <div class="container mx-auto flex space-x-5 justify-center m-5">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Dhaka
+      </button>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Rajshahi
+      </button>
+    </div>
   </section>
 </template>
 

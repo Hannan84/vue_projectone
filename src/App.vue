@@ -2,6 +2,13 @@
 const bgOrange = "bg-orange-400";
 const bgIndogo = "bg-indigo-400";
 const bgGreen = "bg-green-400";
+const textRed = "color:red;";
+const textWhite = "color:white;";
+
+const color = {
+  backgroundColor: "green",
+  border: "1px solid orange",
+};
 
 const weekday = false;
 
@@ -35,11 +42,12 @@ if (messageType == "warning") {
     </section>
     <section class="mt-10">
       <div
-        class="h-16 flex items-center justify-center text-white"
+        class="h-16 flex items-center justify-center"
         :class="[
           weekday == true ? 'bg-red-600' : 'bg-green-600',
           weekday == true ? 'text-2xl' : 'text-4xl',
         ]"
+        :style="textWhite"
       >
         It's a weekday!
       </div>
@@ -52,6 +60,9 @@ if (messageType == "warning") {
         <P class="font-bold">The form contains two input fields:</P>
         <P class="text-sm">This version adds</P>
       </div>
+    </section>
+    <section class="mt-10">
+      <div class="h-16 flex items-center justify-center" :style="color"></div>
     </section>
   </section>
 </template>

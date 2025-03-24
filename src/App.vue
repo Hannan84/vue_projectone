@@ -33,6 +33,24 @@ function getLocation(newLocation) {
     <h2 class="text-center text-2xl py-10">
       Current Location Is {{ location }}
     </h2>
+    <p class="text-center text-xl py-10" v-show="location == 'Dhaka'">
+      Dhaka is the capital and largest city of Bangladesh, known for its rich
+      history, vibrant culture, and rapid urban development. It is one of the
+      most densely populated cities in the world, serving as the country's
+      political, economic, and cultural hub.
+    </p>
+    <p class="text-center text-xl py-10" v-show="location == 'Rajshahi'">
+      Rajshahi is a major city in northwestern Bangladesh, known for its silk
+      industry, mangoes, and educational institutions. It is one of the most
+      historically and culturally rich cities in the country and serves as the
+      administrative center of Rajshahi Division.
+    </p>
+    <p class="text-center text-xl py-10" v-show="location == 'Tangail'">
+      Tangail is a district in central Bangladesh, located in the Dhaka
+      Division. It is known for its handloom industry, rich history, and
+      cultural heritage. The district plays a significant role in Bangladesh’s
+      agriculture, textiles, and trade.
+    </p>
   </section>
 </template>
 

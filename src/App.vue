@@ -1,5 +1,31 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, nextTick } from "vue";
+
+const items = ref([
+  "https://plus.unsplash.com/premium_photo-1669315453542-68167fe4a83b?q=80&w=1493&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://plus.unsplash.com/premium_photo-1668017178993-4c8fc9f59872?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://plus.unsplash.com/premium_photo-1661836692294-755ebc98f9bc?q=80&w=1283&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://plus.unsplash.com/premium_photo-1675448891102-6b8c6faffc3c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://plus.unsplash.com/premium_photo-1700169409644-b908a5ba3547?q=80&w=1478&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+]);
+
+let carousel = null;
+
+const newItem = ref(
+  "https://images.unsplash.com/photo-1742222168686-55ec5ffd3c81?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+);
+
+function addNewItem() {
+  items.value.push(newItem.value);
+  carousel.destroy();
+  nextTick(function () {
+    carousel = new Flickity("#carousel", {});
+  });
+}
+
+onMounted(() => {
+  carousel = new Flickity("#carousel", {});
+});
 
 const location = ref("Dhaka");
 function getLocation(newLocation) {
@@ -52,6 +78,38 @@ function getLocation(newLocation) {
       agriculture, textiles, and trade.
     </p>
   </section>
+
+  <div class="my-10">
+    <input class="py-2 px-4 border" type="text" v-model="newItem" />
+    <button
+      @click="addNewItem()"
+      class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+    >
+      Button
+    </button>
+  </div>
+  <div class="mx-auto items" id="carousel">
+    <div
+      :style="`background-image:url(${item})`"
+      class="item"
+      v-for="(item, index) in items"
+      :key="item"
+    >
+      {{ index + 1 }}
+    </div>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.items {
+  width: 600px;
+  height: 400px;
+}
+
+.item {
+  width: 600px;
+  height: 400px;
+  background-color: #ccc;
+  background-size: cover;
+}
+</style>

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, nextTick } from "vue";
 
+// carousel
 const items = ref([
   "https://plus.unsplash.com/premium_photo-1669315453542-68167fe4a83b?q=80&w=1493&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://plus.unsplash.com/premium_photo-1668017178993-4c8fc9f59872?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -27,6 +28,50 @@ onMounted(() => {
   carousel = new Flickity("#carousel", {});
 });
 
+// pie chart
+
+const newChart = ref(16);
+
+let chart = null;
+
+const dataset = [100, 100, 100];
+
+const data = {
+  labels: ["Red", "Blue", "Yellow"],
+  datasets: [
+    {
+      label: "My Dataset",
+      data: dataset,
+      backgroundColor: [
+        "rgb(255, 99, 132)",
+        "rgb(54, 162, 235)",
+        "rgb(255, 205, 86)",
+        "rgb(43, 105, 86)",
+        "rgb(21, 21, 186)",
+        "rgb(55, 155, 75)",
+      ],
+      hoverOffset: 4,
+    },
+  ],
+};
+
+const config = {
+  type: "pie",
+  data: data,
+};
+
+onMounted(() => {
+  const ctx = document.getElementById("myChart");
+  chart = new Chart(ctx, config);
+});
+
+function updateChart() {
+  dataset.push(newChart.value);
+  chart.data.datasets[0].data = dataset;
+  chart.update();
+}
+
+// location information
 const location = ref("Dhaka");
 function getLocation(newLocation) {
   location.value = newLocation;
@@ -80,6 +125,7 @@ function getLocation(newLocation) {
   </section>
 
   <div class="my-10">
+    <h2 class="text-center text-2xl py-10">Flickity Carousel</h2>
     <input class="py-2 px-4 border" type="text" v-model="newItem" />
     <button
       @click="addNewItem()"
@@ -94,9 +140,20 @@ function getLocation(newLocation) {
       class="item"
       v-for="(item, index) in items"
       :key="item"
+    ></div>
+  </div>
+  <h2 class="text-center text-2xl py-10">Pie Chart using chart.js</h2>
+  <div class="mx-auto w-[400px] h-[400px] bg-gray-400">
+    <canvas id="myChart"></canvas>
+  </div>
+  <div class="my-10">
+    <input class="py-2 px-4 border" type="text" v-model="newChart" />
+    <button
+      @click="updateChart()"
+      class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
     >
-      {{ index + 1 }}
-    </div>
+      Button
+    </button>
   </div>
 </template>
 

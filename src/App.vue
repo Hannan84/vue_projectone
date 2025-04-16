@@ -76,6 +76,15 @@ const location = ref("Dhaka");
 function getLocation(newLocation) {
   location.value = newLocation;
 }
+
+// tow way binding
+const color = ref("Green");
+
+function getStyle() {
+  return {
+    backgroundColor: color.value,
+  };
+}
 </script>
 
 <template>
@@ -155,6 +164,15 @@ function getLocation(newLocation) {
       Button
     </button>
   </div>
+  <section class="mx-auto container">
+    <h2 class="text-center text-2xl py-10">Two way binding v-model</h2>
+    <p class="pb-2">Your Favorite Color: {{ color }}</p>
+    <p>
+      <span>Write your color: </span>
+      <input class="py-2 px-4 border" type="text" v-model="color" />
+    </p>
+    <div class="w-32 h-32 mt-10 ml-80" :style="getStyle()"></div>
+  </section>
 </template>
 
 <style scoped>
